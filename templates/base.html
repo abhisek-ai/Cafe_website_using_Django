@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhisek's CAFE</title>
+    <link rel="stylesheet" href="{% static 'bs/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"
+    {% block css %}
+
+    {% endblock css %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-secondary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Abhisek's CAFE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="home" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="about_us" href="{% url 'about_us' %}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="contact" href="{% url 'contact' %}">Contact</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="menu" href="{% url 'menu' %}">Menu</a>
+              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="cart" href="{% url 'cart' %}">Cart</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Welcome , Abhisek!{{user.username}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                  <li><a class="dropdown-item" href="#"></a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'signout' %}">Log Out</a></li>
+                </ul>
+              </li>
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-dark my-2 my-sm-0 mx-8" type="submit">Search</button>
+                </form>
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'signin' %}">SignIn</a>
+              </li>
+              {%endif%}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% block content%}
+
+    {% endblock content%}
+    <footer class="bg-dark text-light p-5 text-center">
+        &copy; 2022
+    </footer> 
+    {% block extrajs %}
+    <script src="{% static 'bs/bootstrap.bundle.min.js' %}"></script>
+    {% endblock extrajs%} 

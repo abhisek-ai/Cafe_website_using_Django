@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<h1> Contact Us</h1>
+<form action="" onsubmit="return validate()">
+    Name : <br>
+    <input type="text" name="name" id="name" placeholder="Enter you name"><br>
+    Suggestions : <br>
+    <textarea name="suggest" id="suggest" cols="19" rows="5" placeholder="Enter you suggestions,if any"></textarea><br>
+    <input type="submit" value="Submit" >  
+</form>
+{% endblock content %}
+
+{% block extrajs%}
+<script src="{% static 'js/form-validator.js' %}"></script>
+{% endblock extrajs%}
+
+

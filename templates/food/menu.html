@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% comment%}
+
+
+<h1>Menu</h1>
+<ul>
+    {% for c in cuisine %}
+    <li>{{c}}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+{% endcomment%}
+<div class="container">
+    <div class="row">
+        {% for food in foods %}
+        <div class="col-md-2">
+            <div class="card my-2">
+                <img src="{{ food.photo.url}}" alt="" class="card-img-top" height="120">
+                <div class="card-body">
+                    <h5 class="h5">{{food.name}}</h5>
+                    <p class="card-text">{{food.price}}</p>
+                    <a href="{% url 'details' food.id %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+{% endblock content%}
+
